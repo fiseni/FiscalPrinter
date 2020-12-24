@@ -36,10 +36,10 @@ steps:
     version: 5.0.x
     installationPath: $(Agent.ToolsDirectory)/dotnet
     
-- task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 4.9.3'
+- task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 5.8.0'
   inputs:
-    versionSpec: 4.9.3
+    versionSpec: 5.8.0
 
 - task: NuGetCommand@2
   inputs:
