@@ -36,6 +36,48 @@ namespace PozitronDev.FiscalPrinter
             }
         }
 
+        //public FiscalResponse PrintBill(CreateFiscalBillRequest request)
+        //{
+        //    try
+        //    {
+        //        ecr.OpenPort();
+        //        SendCommandOpenedPort(FiscalCommandsEnum.OpenFiscalBill, request.OpenBill);
+        //        foreach (var item in request.Items)
+        //        {
+        //            SendCommandOpenedPort(FiscalCommandsEnum.RegisterItemOnOpenBill, item);
+        //        }
+        //        foreach (var payment in request.RegisterPayments)
+        //        {
+        //            SendCommandOpenedPort(FiscalCommandsEnum.CalculateTotalOnOpenBill, payment);
+        //        }
+        //        var response = SendCommandOpenedPort(FiscalCommandsEnum.CloseFiscalBill, null);
+        //        ecr.ClosePort();
+
+        //        return response;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //        throw e;
+        //    }
+        //}
+
+        private FiscalResponse SendCommandOpenedPort<TResponse>(IFiscalCommand<TResponse> command) where TResponse : FiscalResponse
+        {
+            try
+            {
+                var ecrResult = ecr.WriteCommand(command.Byte, command.RequestData ?? "");
+
+                var fiscalResponse = ConvertAccentResultInFiscalResponse(ecrResult);
+
+                return command.MapResponse(fiscalResponse);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         private FiscalResponse ConvertAccentResultInFiscalResponse(EcrResult ecrResult)
         {
             var response = new FiscalResponse();
