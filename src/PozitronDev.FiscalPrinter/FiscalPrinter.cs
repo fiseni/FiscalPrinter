@@ -22,5 +22,15 @@ namespace PozitronDev.FiscalPrinter
         {
             return processor.SendCommand(command);
         }
+
+        public FiscalResponse PrintBill(CreateFiscalBillRequest request)
+        {
+            return processor.PrintBill(request);
+        }
+
+        public FiscalResponse PrintCancelledBill(CreateCancelledFiscalBillRequest request)
+        {
+            return processor.PrintCancelledBill(request);
+        }
     }
 }

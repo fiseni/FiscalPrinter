@@ -11,7 +11,7 @@ namespace PozitronDev.FiscalPrinter
         private readonly ErrorDictionary errorDictionary;
         private readonly Ecr ecr;
 
-        public CommandProcessor(Ecr ecr)
+        internal CommandProcessor(Ecr ecr)
         {
             errorDictionary = new ErrorDictionary();
             this.ecr = ecr;
@@ -36,31 +36,59 @@ namespace PozitronDev.FiscalPrinter
             }
         }
 
-        //public FiscalResponse PrintBill(CreateFiscalBillRequest request)
-        //{
-        //    try
-        //    {
-        //        ecr.OpenPort();
-        //        SendCommandOpenedPort(FiscalCommandsEnum.OpenFiscalBill, request.OpenBill);
-        //        foreach (var item in request.Items)
-        //        {
-        //            SendCommandOpenedPort(FiscalCommandsEnum.RegisterItemOnOpenBill, item);
-        //        }
-        //        foreach (var payment in request.RegisterPayments)
-        //        {
-        //            SendCommandOpenedPort(FiscalCommandsEnum.CalculateTotalOnOpenBill, payment);
-        //        }
-        //        var response = SendCommandOpenedPort(FiscalCommandsEnum.CloseFiscalBill, null);
-        //        ecr.ClosePort();
+        public FiscalResponse PrintBill(CreateFiscalBillRequest request)
+        {
+            try
+            {
+                ecr.OpenPort();
+                SendCommandOpenedPort(new OpenFiscalBillCommand(request.OpenBill));
 
-        //        return response;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e);
-        //        throw e;
-        //    }
-        //}
+                foreach (var item in request.Items)
+                {
+                    SendCommandOpenedPort(new RegisterItemOnOpenBillCommand(item));
+                }
+                foreach (var payment in request.RegisterPayments)
+                {
+                    SendCommandOpenedPort(new CalculateTotalOnOpenBillCommand(payment));
+                }
+
+                var response = SendCommandOpenedPort(new CloseFiscalBillCommand());
+                ecr.ClosePort();
+
+                return response;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public FiscalResponse PrintCancelledBill(CreateCancelledFiscalBillRequest request)
+        {
+            try
+            {
+                ecr.OpenPort();
+                SendCommandOpenedPort(new OpenCancelledFiscalBillCommand(request.OpenBill));
+
+                foreach (var item in request.Items)
+                {
+                    SendCommandOpenedPort(new RegisterItemOnOpenBillCommand(item));
+                }
+                foreach (var payment in request.RegisterPayments)
+                {
+                    SendCommandOpenedPort(new CalculateTotalOnOpenBillCommand(payment));
+                }
+
+                var response = SendCommandOpenedPort(new CloseCancelledFiscalBillCommand());
+                ecr.ClosePort();
+
+                return response;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         private FiscalResponse SendCommandOpenedPort<TResponse>(IFiscalCommand<TResponse> command) where TResponse : FiscalResponse
         {
