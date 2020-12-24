@@ -4,4 +4,16 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Enumerations\" />
+    <Folder Include="Libs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ecr">
+      <HintPath>Libs\ecr.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
