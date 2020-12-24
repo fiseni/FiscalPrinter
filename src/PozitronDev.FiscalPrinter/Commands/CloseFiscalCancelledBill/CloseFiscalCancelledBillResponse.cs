@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PozitronDev.Convert;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,13 +11,11 @@ namespace PozitronDev.FiscalPrinter
         {
             var data = response.RawData.Split(',');
 
-            int.TryParse(data[0], out var billNo);
-            FiscalBillNo = billNo;
+            FiscalBillNo = data[0].To().IntOrDefault;
 
             if (data.Length > 1)
             {
-                int.TryParse(data[1], out var cancelledBillNo);
-                FiscalCancelledBillNo = cancelledBillNo;
+                FiscalCancelledBillNo = data[1].To().IntOrDefault;
             }
         }
 

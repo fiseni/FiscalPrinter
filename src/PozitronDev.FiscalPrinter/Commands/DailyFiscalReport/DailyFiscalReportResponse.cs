@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PozitronDev.Convert;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,19 +7,19 @@ namespace PozitronDev.FiscalPrinter
 {
     public class DailyFiscalReportResponse : FiscalResponse
     {
-        private readonly ConversionHelper _helper = new ConversionHelper();
+        private readonly ConversionHelper helper = new ConversionHelper();
 
         public DailyFiscalReportResponse(FiscalResponse response) : base(response)
         {
             var data = response.RawData.Split(',');
 
-            int.TryParse(data[0], out var fiscalNumber);
-            NumOfFiscalRecord = fiscalNumber;
-            TotalExcludedTax = _helper.ConvertAccentDecimalStringToDecimal(data[1]);
-            TotalExcludedSaleFromTaxA = _helper.ConvertAccentDecimalStringToDecimal(data[2]);
-            TotalExcludedSaleFromTaxB = _helper.ConvertAccentDecimalStringToDecimal(data[3]);
-            TotalExcludedSaleFromTaxC = _helper.ConvertAccentDecimalStringToDecimal(data[4]);
-            TotalExcludedSaleFromTaxD = _helper.ConvertAccentDecimalStringToDecimal(data[5]);
+            NumOfFiscalRecord = data[0].To().IntOrDefault;
+
+            TotalExcludedTax = helper.ConvertAccentDecimalStringToDecimal(data[1]);
+            TotalExcludedSaleFromTaxA = helper.ConvertAccentDecimalStringToDecimal(data[2]);
+            TotalExcludedSaleFromTaxB = helper.ConvertAccentDecimalStringToDecimal(data[3]);
+            TotalExcludedSaleFromTaxC = helper.ConvertAccentDecimalStringToDecimal(data[4]);
+            TotalExcludedSaleFromTaxD = helper.ConvertAccentDecimalStringToDecimal(data[5]);
         }
 
         public int NumOfFiscalRecord { get; set; }
