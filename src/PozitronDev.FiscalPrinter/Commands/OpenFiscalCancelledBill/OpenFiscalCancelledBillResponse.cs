@@ -9,13 +9,18 @@ namespace PozitronDev.FiscalPrinter
         public OpenFiscalCancelledBillResponse(FiscalResponse response) : base(response)
         {
             var data = response.RawData.Split(',');
-            int.TryParse(data[0], out var fiscalNum);
-            FiscalNumber = fiscalNum;
-            int.TryParse(data[1], out var stornoNum);
-            FiscalStornoNumber = stornoNum;
+
+            int.TryParse(data[0], out var billNo);
+            FiscalBillNo = billNo;
+
+            if (data.Length > 1)
+            {
+                int.TryParse(data[1], out var cancelledBillNo);
+                FiscalCancelledBillNo = cancelledBillNo;
+            }
         }
 
-        public int FiscalNumber { get; set; }
-        public int FiscalStornoNumber { get; set; }
+        public int FiscalBillNo { get; set; }
+        public int FiscalCancelledBillNo { get; set; }
     }
 }
