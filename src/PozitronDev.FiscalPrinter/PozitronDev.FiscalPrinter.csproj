@@ -7,8 +7,8 @@
     <Company>Pozitron Group LLC</Company>
     <Product>Pozitron Fiscal Printer</Product>
     <Title>PozitronDev.FiscalPrinter</Title>
-    <Description>High level abstractions simplifying the task of printing to fiscal devices.</Description>
-    <Summary>High level abstractions simplifying the task of printing to fiscal devices.</Summary>
+    <Description>High-level abstractions simplifying the task of printing to fiscal devices.</Description>
+    <Summary>High-level abstractions simplifying the task of printing to fiscal devices.</Summary>
     <Copyright>Copyright © 2020 Pozitron Group LLC</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReleaseNotes>Preview Release.</PackageReleaseNotes>

@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PozitronDev.FiscalPrinter",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7FCC42C4-6E97-4373-AE60-18402C76B585}"
 	ProjectSection(SolutionItems) = preProject
+		azure-build.yaml = azure-build.yaml
 		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
@@ -14,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{E76AB4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAppNET48", "sample\SampleAppNET48\SampleAppNET48.csproj", "{533876D5-58D8-4B27-927A-E6BD161B520C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAppNET50", "sample\SampleAppNET50\SampleAppNET50.csproj", "{EE3C7774-2E61-4786-842B-B72FFB8C75FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleAppNET50", "sample\SampleAppNET50\SampleAppNET50.csproj", "{EE3C7774-2E61-4786-842B-B72FFB8C75FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
