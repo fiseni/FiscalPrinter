@@ -10,7 +10,7 @@
 
 # PozitronDev FiscalPrinter
 
-Nuget package providing high-level abstractions simplifying the task of printing to fiscal devices. The package is based and build upon the `ecr.dll` driver published by `Accent` [here](https://www.accent.mk/?page_id=1282#sy250).
+Nuget package providing high-level abstractions and simplifying the task of printing to fiscal devices. The package is based and build upon the `ecr.dll` driver published by `Accent` [here](https://www.accent.mk/?page_id=1282#sy250).
 
 ## Usage
 
