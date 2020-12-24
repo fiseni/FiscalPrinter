@@ -18,9 +18,10 @@ namespace PozitronDev.FiscalPrinter
             processor = new CommandProcessor(ecr);
         }
 
-        public TResponse Send<TResponse>(IFiscalCommand<TResponse> command) where TResponse : FiscalResponse
+        public TResponse Send<TResponse>(IFiscalCommand<TResponse> command, bool initiateConnection = true) 
+            where TResponse : FiscalResponse
         {
-            return processor.SendCommand(command);
+            return processor.SendCommand(command, initiateConnection);
         }
 
         public FiscalResponse PrintBill(CreateFiscalBillRequest request)
