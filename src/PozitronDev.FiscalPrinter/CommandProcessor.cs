@@ -17,13 +17,22 @@ namespace PozitronDev.FiscalPrinter
             this.ecr = ecr;
         }
 
-        public TResponse SendCommand<TResponse>(IFiscalCommand<TResponse> command) where TResponse : FiscalResponse
+        public TResponse SendCommand<TResponse>(IFiscalCommand<TResponse> command, bool initiateConnection = true)
+            where TResponse : FiscalResponse
         {
             try
             {
-                ecr.OpenPort();
+                if (initiateConnection)
+                {
+                    ecr.OpenPort();
+                }
+
                 var ecrResult = ecr.WriteCommand(command.Byte, command.RequestData ?? "");
-                ecr.ClosePort();
+
+                if (initiateConnection)
+                {
+                    ecr.ClosePort();
+                }
 
                 var fiscalResponse = ConvertAccentResultInFiscalResponse(ecrResult);
 
@@ -41,18 +50,18 @@ namespace PozitronDev.FiscalPrinter
             try
             {
                 ecr.OpenPort();
-                SendCommandOpenedPort(new OpenFiscalBillCommand(request.OpenBill));
+                SendCommand(new OpenFiscalBillCommand(request.OpenBill), initiateConnection: false);
 
                 foreach (var item in request.Items)
                 {
-                    SendCommandOpenedPort(new RegisterItemOnOpenBillCommand(item));
+                    SendCommand(new RegisterItemOnOpenBillCommand(item), initiateConnection: false);
                 }
                 foreach (var payment in request.RegisterPayments)
                 {
-                    SendCommandOpenedPort(new CalculateTotalOnOpenBillCommand(payment));
+                    SendCommand(new CalculateTotalOnOpenBillCommand(payment), initiateConnection: false);
                 }
 
-                var response = SendCommandOpenedPort(new CloseFiscalBillCommand());
+                var response = SendCommand(new CloseFiscalBillCommand(), initiateConnection: false);
                 ecr.ClosePort();
 
                 return response;
@@ -68,37 +77,21 @@ namespace PozitronDev.FiscalPrinter
             try
             {
                 ecr.OpenPort();
-                SendCommandOpenedPort(new OpenFiscalCancelledBillCommand(request.OpenBill));
+                SendCommand(new OpenFiscalCancelledBillCommand(request.OpenBill), initiateConnection: false);
 
                 foreach (var item in request.Items)
                 {
-                    SendCommandOpenedPort(new RegisterItemOnOpenBillCommand(item));
+                    SendCommand(new RegisterItemOnOpenBillCommand(item), initiateConnection: false);
                 }
                 foreach (var payment in request.RegisterPayments)
                 {
-                    SendCommandOpenedPort(new CalculateTotalOnOpenBillCommand(payment));
+                    SendCommand(new CalculateTotalOnOpenBillCommand(payment), initiateConnection: false);
                 }
 
-                var response = SendCommandOpenedPort(new CloseFiscalCancelledBillCommand());
+                var response = SendCommand(new CloseFiscalCancelledBillCommand(), initiateConnection: false);
                 ecr.ClosePort();
 
                 return response;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        private FiscalResponse SendCommandOpenedPort<TResponse>(IFiscalCommand<TResponse> command) where TResponse : FiscalResponse
-        {
-            try
-            {
-                var ecrResult = ecr.WriteCommand(command.Byte, command.RequestData ?? "");
-
-                var fiscalResponse = ConvertAccentResultInFiscalResponse(ecrResult);
-
-                return command.MapResponse(fiscalResponse);
             }
             catch (Exception)
             {
