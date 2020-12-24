@@ -36,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PozitronDev.Convert" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="ecr">
       <HintPath>Libs\ecr.dll</HintPath>
     </Reference>
