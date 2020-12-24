@@ -22,11 +22,11 @@ namespace PozitronDev.FiscalPrinter
             TotalExcludedSaleFromTaxD = helper.ConvertAccentDecimalStringToDecimal(data[5]);
         }
 
-        public int NumOfFiscalRecord { get; set; }
-        public decimal TotalExcludedTax { get; set; }
-        public decimal TotalExcludedSaleFromTaxA { get; set; }
-        public decimal TotalExcludedSaleFromTaxB { get; set; }
-        public decimal TotalExcludedSaleFromTaxC { get; set; }
-        public decimal TotalExcludedSaleFromTaxD { get; set; }
+        public int NumOfFiscalRecord { get; }
+        public decimal TotalExcludedTax { get; }
+        public decimal TotalExcludedSaleFromTaxA { get; }
+        public decimal TotalExcludedSaleFromTaxB { get; }
+        public decimal TotalExcludedSaleFromTaxC { get; }
+        public decimal TotalExcludedSaleFromTaxD { get; }
     }
 }

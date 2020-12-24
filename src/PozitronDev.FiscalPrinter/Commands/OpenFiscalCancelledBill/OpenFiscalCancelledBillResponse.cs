@@ -19,7 +19,7 @@ namespace PozitronDev.FiscalPrinter
             }
         }
 
-        public int FiscalBillNo { get; set; }
-        public int FiscalCancelledBillNo { get; set; }
+        public int FiscalBillNo { get; }
+        public int FiscalCancelledBillNo { get; }
     }
 }

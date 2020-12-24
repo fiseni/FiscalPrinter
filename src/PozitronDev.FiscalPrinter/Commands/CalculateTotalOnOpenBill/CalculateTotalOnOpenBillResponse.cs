@@ -12,9 +12,9 @@ namespace PozitronDev.FiscalPrinter
             Success = true;
         }
 
-        public bool Success { get; set; }
-        public string PaidCode { get; set; }
-        public decimal Amount { get; set; }
-        public decimal ReturnAmount { get; set; }
+        public bool Success { get; }
+        public string PaidCode { get; }
+        public decimal Amount { get; }
+        public decimal ReturnAmount { get; }
     }
 }
