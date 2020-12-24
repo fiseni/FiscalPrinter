@@ -10,7 +10,7 @@ namespace PozitronDev.FiscalPrinter
 
         public DailyFiscalReportResponse(FiscalResponse response) : base(response)
         {
-            var data = response.Data.Split(',');
+            var data = response.RawData.Split(',');
 
             int.TryParse(data[0], out var fiscalNumber);
             NumOfFiscalRecord = fiscalNumber;

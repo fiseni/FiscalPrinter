@@ -108,7 +108,6 @@ namespace PozitronDev.FiscalPrinter
 
         private FiscalResponse ConvertAccentResultInFiscalResponse(EcrResult ecrResult)
         {
-            var response = new FiscalResponse();
             var msg = new StringBuilder();
             var bits = new BitArray(ecrResult.Status);
 
@@ -120,15 +119,15 @@ namespace PozitronDev.FiscalPrinter
                     msg.AppendLine(errorDictionary._dictionary[i]);
             }
 
-            response.StatusMsg = msg.ToString();
-            response.Data = Encoding.ASCII.GetString(ecrResult.Data);
+            var statusMsg = msg.ToString();
+            var rawData = Encoding.ASCII.GetString(ecrResult.Data);
 
             //RAZGELDAJ ZA OD 35 NATMU OTKAKO KE IMASH FISKALIZIRAN PRINTER
-            response.PrinterStatus = StatusEnum.OK;
-            if (bits[13] || bits[2] || bits[17] || bits[18] || bits[19] || bits[20] || bits[34] || bits[35]) response.PrinterStatus = StatusEnum.WARNING;
-            else if (bits[5] || bits[37]) response.PrinterStatus = StatusEnum.ERROR;
+            var printerStatus = StatusEnum.OK;
+            if (bits[13] || bits[2] || bits[17] || bits[18] || bits[19] || bits[20] || bits[34] || bits[35]) printerStatus = StatusEnum.WARNING;
+            else if (bits[5] || bits[37]) printerStatus = StatusEnum.ERROR;
 
-            return response;
+            return new FiscalResponse(printerStatus, statusMsg, rawData);
         }
     }
 }

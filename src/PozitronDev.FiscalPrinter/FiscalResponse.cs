@@ -6,18 +6,20 @@ namespace PozitronDev.FiscalPrinter
 {
     public class FiscalResponse
     {
-        public StatusEnum PrinterStatus { get; set; }
-        public string StatusMsg { get; set; }
-        public string Data { get; set; }
+        public StatusEnum PrinterStatus { get; }
+        public string StatusMsg { get; }
+        public string RawData { get; }
 
-        public FiscalResponse()
+        public FiscalResponse(StatusEnum printerStatus, string statusMsg, string rawData)
         {
+            PrinterStatus = printerStatus;
+            StatusMsg = statusMsg;
+            RawData = rawData;
         }
 
-        public FiscalResponse(FiscalResponse response)
+        public FiscalResponse(FiscalResponse response) 
+            : this(response.PrinterStatus, response.StatusMsg, response.RawData)
         {
-            PrinterStatus = response.PrinterStatus;
-            StatusMsg = response.StatusMsg;
         }
     }
 }

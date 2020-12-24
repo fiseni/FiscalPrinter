@@ -8,7 +8,7 @@ namespace PozitronDev.FiscalPrinter
     {
         public OpenFiscalBillResponse(FiscalResponse response) : base(response)
         {
-            var data = response.Data.Split(',');
+            var data = response.RawData.Split(',');
             int.TryParse(data[0], out var fiscalNum);
             FiscalNumber = fiscalNum;
             int.TryParse(data[1], out var stornoNum);
