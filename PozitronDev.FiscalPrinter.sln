@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{E76AB4D4-7458-4439-A512-B226FF7E72EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAppNET48", "sample\SampleAppNET48\SampleAppNET48.csproj", "{533876D5-58D8-4B27-927A-E6BD161B520C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +24,16 @@ Global
 		{8F8B1D34-F547-4645-83B9-0AEA7B5DB283}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F8B1D34-F547-4645-83B9-0AEA7B5DB283}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F8B1D34-F547-4645-83B9-0AEA7B5DB283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{533876D5-58D8-4B27-927A-E6BD161B520C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533876D5-58D8-4B27-927A-E6BD161B520C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533876D5-58D8-4B27-927A-E6BD161B520C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533876D5-58D8-4B27-927A-E6BD161B520C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{533876D5-58D8-4B27-927A-E6BD161B520C} = {E76AB4D4-7458-4439-A512-B226FF7E72EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A102B81C-6E0C-4354-BA15-264BA6695E5E}
