@@ -4,9 +4,9 @@ using System.Text;
 
 namespace PozitronDev.FiscalPrinter
 {
-    public class CreateCancelledFiscalBillRequest
+    public class CreateFiscalCancelledBillRequest
     {
-        public OpenCancelledFiscalBillRequest OpenBill { get; set; }
+        public OpenFiscalCancelledBillRequest OpenBill { get; set; }
         public List<RegisterItemOnOpenBillRequest> Items { get; set; }
         public List<CalculateTotalOnOpenBillRequest> RegisterPayments { get; set; }
     }

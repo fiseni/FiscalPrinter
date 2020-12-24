@@ -63,12 +63,12 @@ namespace PozitronDev.FiscalPrinter
             }
         }
 
-        public FiscalResponse PrintCancelledBill(CreateCancelledFiscalBillRequest request)
+        public FiscalResponse PrintCancelledBill(CreateFiscalCancelledBillRequest request)
         {
             try
             {
                 ecr.OpenPort();
-                SendCommandOpenedPort(new OpenCancelledFiscalBillCommand(request.OpenBill));
+                SendCommandOpenedPort(new OpenFiscalCancelledBillCommand(request.OpenBill));
 
                 foreach (var item in request.Items)
                 {
@@ -79,7 +79,7 @@ namespace PozitronDev.FiscalPrinter
                     SendCommandOpenedPort(new CalculateTotalOnOpenBillCommand(payment));
                 }
 
-                var response = SendCommandOpenedPort(new CloseCancelledFiscalBillCommand());
+                var response = SendCommandOpenedPort(new CloseFiscalCancelledBillCommand());
                 ecr.ClosePort();
 
                 return response;

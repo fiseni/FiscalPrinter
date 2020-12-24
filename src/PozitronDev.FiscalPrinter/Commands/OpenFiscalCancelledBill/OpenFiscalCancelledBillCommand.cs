@@ -4,11 +4,11 @@ using System.Text;
 
 namespace PozitronDev.FiscalPrinter
 {
-    public class OpenCancelledFiscalBillCommand : IFiscalCommand<OpenCancelledFiscalBillResponse>
+    public class OpenFiscalCancelledBillCommand : IFiscalCommand<OpenFiscalCancelledBillResponse>
     {
-        private readonly OpenCancelledFiscalBillRequest request;
+        private readonly OpenFiscalCancelledBillRequest request;
 
-        public OpenCancelledFiscalBillCommand(OpenCancelledFiscalBillRequest request)
+        public OpenFiscalCancelledBillCommand(OpenFiscalCancelledBillRequest request)
         {
             this.request = request;
         }
@@ -23,9 +23,9 @@ namespace PozitronDev.FiscalPrinter
             }
         }
 
-        public OpenCancelledFiscalBillResponse MapResponse(FiscalResponse fiscalResponse)
+        public OpenFiscalCancelledBillResponse MapResponse(FiscalResponse fiscalResponse)
         {
-            return new OpenCancelledFiscalBillResponse(fiscalResponse);
+            return new OpenFiscalCancelledBillResponse(fiscalResponse);
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace PozitronDev.FiscalPrinter
 {
-    public class OpenCancelledFiscalBillResponse : FiscalResponse
+    public class OpenFiscalCancelledBillResponse : FiscalResponse
     {
-        public OpenCancelledFiscalBillResponse(FiscalResponse response) : base(response)
+        public OpenFiscalCancelledBillResponse(FiscalResponse response) : base(response)
         {
             var data = response.RawData.Split(',');
             int.TryParse(data[0], out var fiscalNum);

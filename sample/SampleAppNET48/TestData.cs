@@ -36,11 +36,11 @@ namespace SampleAppNET48
             };
         }
 
-        public static CreateCancelledFiscalBillRequest GetTestCancelledFiscalBill()
+        public static CreateFiscalCancelledBillRequest GetTestFiscalCancelledBill()
         {
-            return new CreateCancelledFiscalBillRequest
+            return new CreateFiscalCancelledBillRequest
             {
-                OpenBill = new OpenCancelledFiscalBillRequest
+                OpenBill = new OpenFiscalCancelledBillRequest
                 {
                     WaiterCode = 1,
                     WaiterPin = 1,

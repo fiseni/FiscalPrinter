@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PozitronDev.FiscalPrinter
 {
-    public class OpenCancelledFiscalBillRequest : FiscalRequest
+    public class OpenFiscalCancelledBillRequest : FiscalRequest
     {
         //FROM 1 - 8
         public int WaiterCode { get; set; }

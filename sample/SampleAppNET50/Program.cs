@@ -30,7 +30,7 @@ namespace SampleAppNET50
 
         static void PrintCancelledBill(FiscalPrinter printer)
         {
-            var request = TestData.GetTestCancelledFiscalBill();
+            var request = TestData.GetTestFiscalCancelledBill();
 
             try
             {
