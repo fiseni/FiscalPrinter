@@ -6,6 +6,6 @@ namespace PozitronDev.FiscalPrinter
 {
     public class DailyFiscalReportRequest
     {
-        public DailyFiscalEnum DailyReportType { get; set; }
+        public DailyFiscalEnum DailyReportType { get; set; } = DailyFiscalEnum.ZatvaranjeDen;
     }
 }

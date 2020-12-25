@@ -6,7 +6,7 @@ namespace PozitronDev.FiscalPrinter
 {
     public class CalculateTotalOnOpenBillRequest : FiscalRequest
     {
-        public PaymentTypeEnum PaymentType { get; set; }
+        public PaymentTypeEnum PaymentType { get; set; } = PaymentTypeEnum.Cash;
         public decimal Amount { get; set; }
     }
 }
