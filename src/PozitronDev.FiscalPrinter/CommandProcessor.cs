@@ -45,7 +45,7 @@ namespace PozitronDev.FiscalPrinter
             }
         }
 
-        public FiscalResponse PrintBill(CreateFiscalBillRequest request)
+        public CloseFiscalBillResponse PrintBill(CreateFiscalBillRequest request)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace PozitronDev.FiscalPrinter
             }
         }
 
-        public FiscalResponse PrintCancelledBill(CreateFiscalCancelledBillRequest request)
+        public CloseFiscalCancelledBillResponse PrintCancelledBill(CreateFiscalCancelledBillRequest request)
         {
             try
             {
