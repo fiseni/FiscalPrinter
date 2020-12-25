@@ -56,7 +56,7 @@ namespace SampleAppNET48
                 // Usage 1
                 var command = printer.Commands.DailyFiscalReport(new DailyFiscalReportRequest
                 {
-                    DailyReportType = DailyFiscalEnum.ZatvaranjeDen
+                    DailyReportType = DailyFiscalEnum.DayClosure
                 });
                 var result = printer.Send(command);
 

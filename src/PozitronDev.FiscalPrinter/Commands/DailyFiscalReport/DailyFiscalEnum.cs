@@ -6,8 +6,8 @@ namespace PozitronDev.FiscalPrinter
 {
     public enum DailyFiscalEnum
     {
-        ZatvaranjeDen = 0,
-        Kontrolen = 2,
-        ProshirenKFI = 3
+        DayClosure = 0,
+        Control = 2,
+        ExtendedKFI = 3
     }
 }

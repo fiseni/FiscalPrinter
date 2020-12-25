@@ -21,11 +21,11 @@ namespace PozitronDev.FiscalPrinter
             {
                 switch (request.DailyReportType)
                 {
-                    case DailyFiscalEnum.Kontrolen:
+                    case DailyFiscalEnum.Control:
                         return "2";
-                    case DailyFiscalEnum.ProshirenKFI:
+                    case DailyFiscalEnum.ExtendedKFI:
                         return "3";
-                    case DailyFiscalEnum.ZatvaranjeDen:
+                    case DailyFiscalEnum.DayClosure:
                         return "0";
                     default:
                         return "2";
