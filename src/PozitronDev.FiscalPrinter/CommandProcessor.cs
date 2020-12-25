@@ -101,6 +101,11 @@ namespace PozitronDev.FiscalPrinter
 
         private FiscalResponse ConvertAccentResultInFiscalResponse(EcrResult ecrResult)
         {
+            if (ecrResult == null)
+            {
+                return new FiscalResponse(StatusEnum.OK, string.Empty, string.Empty);
+            }
+
             var msg = new StringBuilder();
             var bits = new BitArray(ecrResult.Status);
 
