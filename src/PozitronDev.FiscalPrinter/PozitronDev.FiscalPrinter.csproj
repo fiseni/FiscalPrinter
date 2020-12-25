@@ -17,7 +17,7 @@
     <PackageIcon>pozitronicon.png</PackageIcon>
     <PackageTags>pozitron fiscal printer</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>0.9.1</Version>
+    <Version>0.9.2</Version>
     <!--<DocumentationFile>bin\$(Configuration)\PozitronDev.FiscalPrinter.xml</DocumentationFile>-->
     <RepositoryUrl>https://github.com/fiseni/FiscalPrinter</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
