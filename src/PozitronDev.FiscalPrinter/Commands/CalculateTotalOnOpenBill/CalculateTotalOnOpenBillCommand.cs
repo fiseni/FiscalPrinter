@@ -41,4 +41,10 @@ namespace PozitronDev.FiscalPrinter
             return new CalculateTotalOnOpenBillResponse(fiscalResponse);
         }
     }
+
+    public static partial class FiscalCommandFactoryExtensions
+    {
+        public static CalculateTotalOnOpenBillCommand CalculateTotalOnOpenBill(this IFiscalCommandFactory value, CalculateTotalOnOpenBillRequest request)
+            => new CalculateTotalOnOpenBillCommand(request);
+    }
 }

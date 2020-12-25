@@ -28,4 +28,10 @@ namespace PozitronDev.FiscalPrinter
             return new OpenFiscalBillResponse(fiscalResponse);
         }
     }
+
+    public static partial class FiscalCommandFactoryExtensions
+    {
+        public static OpenFiscalBillCommand OpenFiscalBill(this IFiscalCommandFactory value, OpenFiscalBillRequest request)
+            => new OpenFiscalBillCommand(request);
+    }
 }

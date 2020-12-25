@@ -38,4 +38,10 @@ namespace PozitronDev.FiscalPrinter
             return new DailyFiscalReportResponse(fiscalResponse);
         }
     }
+
+    public static partial class FiscalCommandFactoryExtensions
+    {
+        public static DailyFiscalReportCommand DailyFiscalReport(this IFiscalCommandFactory value, DailyFiscalReportRequest request)
+            => new DailyFiscalReportCommand(request);
+    }
 }

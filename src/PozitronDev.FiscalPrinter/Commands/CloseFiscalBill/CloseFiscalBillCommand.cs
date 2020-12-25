@@ -15,4 +15,10 @@ namespace PozitronDev.FiscalPrinter
             return new CloseFiscalBillResponse(fiscalResponse);
         }
     }
+
+    public static partial class FiscalCommandFactoryExtensions
+    {
+        public static CloseFiscalBillCommand CloseFiscalBill(this IFiscalCommandFactory value)
+            => new CloseFiscalBillCommand();
+    }
 }

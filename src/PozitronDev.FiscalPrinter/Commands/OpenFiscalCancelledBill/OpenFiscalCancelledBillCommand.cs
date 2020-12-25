@@ -28,4 +28,10 @@ namespace PozitronDev.FiscalPrinter
             return new OpenFiscalCancelledBillResponse(fiscalResponse);
         }
     }
+
+    public static partial class FiscalCommandFactoryExtensions
+    {
+        public static OpenFiscalCancelledBillCommand OpenFiscalCancelledBill(this IFiscalCommandFactory value, OpenFiscalCancelledBillRequest request)
+            => new OpenFiscalCancelledBillCommand(request);
+    }
 }
