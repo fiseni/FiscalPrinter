@@ -16,5 +16,88 @@ Nuget package providing high-level abstractions and simplifying the task of prin
 
 Refer to the sample applications provided within this repository under `sample` folder.
 
+Create an instance of `FiscalPrinter` and simply utilize the provided methods
+- Send - It translates the given command and writes it to the fiscal printer
+- PrintBill - This is just a convenience method, since the functionality is used frequently. It just groups necessary commands for this action `OpenFiscalBillCommand`, `RegisterItemOnOpenBillCommand`, `CalculateTotalOnOpenBillCommand` and `CloseFiscalBillCommand`. You can do this manually by utilizing `Send` as well.
+- PrintCancelledBill - Similar to the previous one. It prints the cancelled bill.
+
+Example usage
+
+```c#
+class Program
+{
+    static void Main(string[] args)
+    {
+        var printer = new FiscalPrinter("COM5", 9600);
+
+        try
+        {
+            var command = printer.Commands.DailyFiscalReport(new DailyFiscalReportRequest
+            {
+                DailyReportType = DailyFiscalEnum.DayClosure
+            });
+            var result = printer.Send(command);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+    }
+}
+```
+
+Depending on the usage, and the architecture you have created internally, you may not use the command factory at all and instantiate the command directly
+
+```c#
+var result = printer.Send(new DailyFiscalReportCommand(new DailyFiscalReportRequest
+{
+    DailyReportType = DailyFiscalEnum.DayClosure
+}));
+```
+
+## Extending with your own commands
+
+The package is quite flexible and supports extensions. If any fiscal command is not yet supported by the package, you can add it on your own.
+
+Example extensions
+
+```c#
+public class MyRequest : FiscalRequest
+{
+}
+
+public class MyResponse : FiscalResponse
+{
+    public MyResponse(FiscalResponse response) : base(response)
+    {
+    }
+}
+
+public class MyCommand : IFiscalCommand<MyResponse>
+{
+    private readonly MyRequest request;
+
+    public MyCommand(MyRequest request)
+    {
+        this.request = request;
+    }
+
+    public byte Byte => 0; // Write the byte representation of the command.
+
+    public string RequestData => "something"; // Translate the request information into required request string for the device.
+
+    public MyResponse MapResponse(FiscalResponse fiscalResponse)
+    {
+        return new MyResponse(fiscalResponse);
+    }
+}
+
+public static class MyCommandFactoryExtensions
+{
+    public static MyCommand MyCommand(this IFiscalCommandFactory value, MyRequest request)
+        => new MyCommand(request);
+}
+```
+
 ## Give a Star! :star:
 If you like or are using this project please give it a star. Thanks!

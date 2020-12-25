@@ -60,7 +60,7 @@ namespace SampleAppNET50
                 // Depending on the needs, you can create the command manually, and not use the provided factory extensions.
                 //var result = printer.Send(new DailyFiscalReportCommand(new DailyFiscalReportRequest
                 //{
-                //    DailyReportType = DailyFiscalEnum.ZatvaranjeDen
+                //    DailyReportType = DailyFiscalEnum.DayClosure
                 //}));
             }
             catch (Exception ex)
