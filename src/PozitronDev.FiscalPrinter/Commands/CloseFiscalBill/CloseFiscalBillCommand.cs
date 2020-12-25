@@ -6,7 +6,7 @@ namespace PozitronDev.FiscalPrinter
 {
     public class CloseFiscalBillCommand : IFiscalCommand<CloseFiscalBillResponse>
     {
-        public byte Byte => 56;
+        public byte Byte => (int)FiscalCommandsEnum.CloseFiscalBill;
 
         public string RequestData => null;
 

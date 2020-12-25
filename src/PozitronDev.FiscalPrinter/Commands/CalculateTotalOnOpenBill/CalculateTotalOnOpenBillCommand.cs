@@ -13,7 +13,7 @@ namespace PozitronDev.FiscalPrinter
             this.request = request;
         }
 
-        public byte Byte => 53;
+        public byte Byte => (int)FiscalCommandsEnum.CalculateTotalOnOpenBill;
 
         public string RequestData
         {

@@ -13,7 +13,7 @@ namespace PozitronDev.FiscalPrinter
             this.request = request;
         }
 
-        public byte Byte => 69;
+        public byte Byte => (int)FiscalCommandsEnum.DailyFiscalReport;
 
         public string RequestData
         {

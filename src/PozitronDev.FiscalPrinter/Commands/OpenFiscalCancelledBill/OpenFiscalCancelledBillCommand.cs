@@ -13,7 +13,7 @@ namespace PozitronDev.FiscalPrinter
             this.request = request;
         }
 
-        public byte Byte => 85;
+        public byte Byte => (int)FiscalCommandsEnum.OpenFiscalCancelledBill;
 
         public string RequestData
         {
