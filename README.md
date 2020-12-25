@@ -34,7 +34,7 @@ class Program
         {
             var command = printer.Commands.DailyFiscalReport(new DailyFiscalReportRequest
             {
-                DailyReportType = DailyFiscalEnum.DayClosure
+                DailyReportType = DailyFiscalEnum.Control
             });
             var result = printer.Send(command);
         }
@@ -51,7 +51,7 @@ Depending on the usage, and the architecture you have created internally, you ma
 ```c#
 var result = printer.Send(new DailyFiscalReportCommand(new DailyFiscalReportRequest
 {
-    DailyReportType = DailyFiscalEnum.DayClosure
+    DailyReportType = DailyFiscalEnum.Control
 }));
 ```
 
