@@ -16,7 +16,7 @@ namespace SampleAppNET50
                 OpenBill = new OpenFiscalBillRequest
                 {
                     WaiterCode = 1,
-                    WaiterPin = 1,
+                    WaiterPin = 1111,
                     OperatorPlace = 1
                 },
                 Items = new List<RegisterItemOnOpenBillRequest>() { new RegisterItemOnOpenBillRequest
@@ -43,7 +43,7 @@ namespace SampleAppNET50
                 OpenBill = new OpenFiscalCancelledBillRequest
                 {
                     WaiterCode = 1,
-                    WaiterPin = 1,
+                    WaiterPin = 1111,
                     OperatorPlace = 1
                 },
                 Items = new List<RegisterItemOnOpenBillRequest>() { new RegisterItemOnOpenBillRequest

@@ -10,7 +10,7 @@ namespace PozitronDev.FiscalPrinter
         public int WaiterCode { get; set; } = 1;
 
         //DIGITS 1 - 6
-        public int WaiterPin { get; set; } = 1;
+        public int WaiterPin { get; set; } = 1111;
 
         //NUMBER 1-5 digits
         public int OperatorPlace { get; set; } = 1;
